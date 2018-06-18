@@ -7,11 +7,10 @@ import junit.framework.TestSuite;
 public class AccountTest
    extends TestCase
 {
-
-    public void shouldInitWithBalance()
+    public void testApp()
     { 
       int expected = 0;
       Account testAccount = new Account(0);
-      assertEquals(testAccount.balance, expected);
+      assertEquals(testAccount.getBalance(), expected);
     }
 }
