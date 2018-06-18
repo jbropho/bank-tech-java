@@ -21,4 +21,12 @@ public class AccountTest
       testAccount.deposit(10);
       assertEquals(testAccount.getBalance(), expected);
     }
+
+    public void testWithdraw() 
+    {
+      int expected = 80;
+      Account testAccount = new Account(100);
+      testAccount.withdraw(20);
+      assertEquals(testAccount.getBalance(), expected);
+    }
 }
