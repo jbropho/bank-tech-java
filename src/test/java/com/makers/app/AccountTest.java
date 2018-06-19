@@ -10,14 +10,17 @@ public class AccountTest
     public void testApp()
     { 
       int expected = 0;
-      Account testAccount = new Account(0);
+      Statement statement = new Statement();
+      Account testAccount = new Account(0, statement);
+ 
       assertEquals(testAccount.getBalance(), expected);
     }
 
     public void testDeposit()
     {
       int expected = 10;
-      Account testAccount = new Account(0);
+      Statement statement = new Statement();
+      Account testAccount = new Account(0, statement);
       testAccount.deposit(10);
       assertEquals(testAccount.getBalance(), expected);
     }
@@ -25,7 +28,8 @@ public class AccountTest
     public void testWithdraw() 
     {
       int expected = 80;
-      Account testAccount = new Account(100);
+      Statement statement = new Statement();
+      Account testAccount = new Account(100, statement);
       testAccount.withdraw(20);
       assertEquals(testAccount.getBalance(), expected);
     }
