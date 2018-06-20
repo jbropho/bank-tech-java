@@ -1,25 +1,28 @@
 package com.makers.app;
 
+import com.makers.app.Transaction;
+
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Statement {
 
-  private ArrayList<HashMap<String, String>> history = 
-    new ArrayList<HashMap<String, String>>();
+  private ArrayList<Transaction> history =
+    new ArrayList<Transaction>();
+    
+  public void addTransaction(int amount, String type)  {
+    history.add(createTransaction(amount, type));
+  }
 
-  public HashMap<String, String>
-     addTransaction(String amount, String type) 
-  {
-    HashMap<String,String> transaction = new HashMap<String,String>();  
-    transaction.put("amount", amount);
-    transaction.put("type", type);
-    history.add(transaction);
+  public Transaction createTransaction(int amount, String type) {
+    Transaction transaction = new Transaction(type, amount);
     return transaction;
   }
 
-  public void printHistory() 
-  {
+  public ArrayList<Transaction> getHistory() {
+    return history;
+  }
+
+  public void printHistory() {
     System.out.println( history );
   }
 }
