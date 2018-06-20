@@ -5,10 +5,8 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class AccountTest
-   extends TestCase
-{
-    public void testApp()
-    { 
+   extends TestCase {
+    public void testApp() { 
       int expected = 0;
       Statement statement = new Statement();
       Account testAccount = new Account(0, statement);
@@ -16,8 +14,7 @@ public class AccountTest
       assertEquals(testAccount.getBalance(), expected);
     }
 
-    public void testDeposit()
-    {
+    public void testDeposit() {
       int expected = 10;
       Statement statement = new Statement();
       Account testAccount = new Account(0, statement);
@@ -25,8 +22,7 @@ public class AccountTest
       assertEquals(testAccount.getBalance(), expected);
     }
 
-    public void testWithdraw() 
-    {
+    public void testWithdraw() {
       int expected = 80;
       Statement statement = new Statement();
       Account testAccount = new Account(100, statement);
