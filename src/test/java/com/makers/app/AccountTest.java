@@ -13,12 +13,11 @@ public class AccountTest {
    
     @Before  
     public void setUp() {
-      testAccount = new Account(0, statement);
       statement = mock(Statement.class);
+      testAccount = new Account(0, statement);
     }
     
-    @Test
-    public void testAccount() { 
+    @Test public void testAccount() { 
       int expected = 0;
 
       assertEquals(testAccount.getBalance(), expected);
@@ -46,7 +45,7 @@ public class AccountTest {
 
     @Test public void testWithdrawCallsAddTransaction(){
       testAccount.withdraw(0);
-      
+
       verify(statement).addTransaction(any(Transaction.class));
     }
 }
