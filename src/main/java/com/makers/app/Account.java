@@ -1,6 +1,7 @@
 package com.makers.app;
 
 import com.makers.app.Statement;
+import com.makers.app.Transaction;
 
 public class Account {
   private int balance;
@@ -21,11 +22,11 @@ public class Account {
 
   public void deposit(int amount) {
     this.balance += amount;
-    statement.addTransaction(amount, "deposit");
+    statement.addTransaction(amount, "deposit", Transaction.class);
   }
 
   public void withdraw(int amount) {
     this.balance -= amount;
-    statement.addTransaction(amount, "withdraw");
+    statement.addTransaction(amount, "withdraw", Transaction.class);
   }
 }
