@@ -3,7 +3,6 @@ package com.makers.app;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-
 import static org.mockito.Mockito.*;
 import static org.mockito.Matchers.any;
 
@@ -11,18 +10,17 @@ public class AccountTest {
     
     Statement statement;
     Account testAccount;
-    Transaction transaction;
-    
+   
     @Before  
     public void setUp() {
-      statement = mock(Statement.class);
       testAccount = new Account(0, statement);
-      transaction = mock(Transaction.class);
+      statement = mock(Statement.class);
     }
     
     @Test
     public void testAccount() { 
       int expected = 0;
+
       assertEquals(testAccount.getBalance(), expected);
     }
   
@@ -42,11 +40,13 @@ public class AccountTest {
 
     @Test public void depositCallsAddTransaction(){
       testAccount.deposit(0);
+
       verify(statement).addTransaction(any(Transaction.class));
     }
 
     @Test public void testWithdrawCallsAddTransaction(){
       testAccount.withdraw(0);
+      
       verify(statement).addTransaction(any(Transaction.class));
     }
 }
