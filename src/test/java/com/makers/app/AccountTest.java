@@ -1,55 +1,52 @@
 package com.makers.app;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-
 import org.junit.*;
+import static org.junit.Assert.*;
+
 
 import static org.mockito.Mockito.*;
 import static org.mockito.Matchers.any;
 
-public class AccountTest
-   extends TestCase {
-
+public class AccountTest {
+    
+    Statement statement;
+    Account testAccount;
+    Transaction transaction;
+    
+    @Before  
+    public void setUp() {
+      statement = mock(Statement.class);
+      testAccount = new Account(0, statement);
+      transaction = mock(Transaction.class);
+    }
+    
+    @Test
     public void testAccount() { 
       int expected = 0;
-
-      Statement statement = mock(Statement.class);
-      Account testAccount = new Account(0, statement);
-      Transaction transaction = mock(Transaction.class);
-
       assertEquals(testAccount.getBalance(), expected);
     }
-
-    public void testDeposit() {
+  
+    @Test public void depositAddsAmount() {
       int expected = 10;
-
-      Statement statement = mock(Statement.class);
-      Account testAccount = new Account(0, statement);
       testAccount.deposit(10);
 
       assertEquals(testAccount.getBalance(), expected);
     }
 
-    public void testDepositCallsAddTransaction(){
-      Statement statement = mock(Statement.class);
-      Account testAccount = new Account(0, statement);
-      Transaction transaction = mock(Transaction.class);
+    @Test public void withdrawRemovesAmount() {
+      int expected = -10;
 
+      testAccount.withdraw(10);
+      assertEquals(testAccount.getBalance(), expected);
+    }
+
+    @Test public void depositCallsAddTransaction(){
       testAccount.deposit(0);
-
       verify(statement).addTransaction(any(Transaction.class));
     }
 
-    public void testWithdrawCallsAddTransaction(){
-      Statement statement = mock(Statement.class);
-      Account testAccount = new Account(0, statement);
-      Transaction transaction = mock(Transaction.class);
-
+    @Test public void testWithdrawCallsAddTransaction(){
       testAccount.withdraw(0);
-
       verify(statement).addTransaction(any(Transaction.class));
     }
 }
